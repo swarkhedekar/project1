@@ -1,0 +1,103 @@
+@import 'tailwindcss';
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: #081229;
+    color: #ffffff;
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: 'Playfair Display', ui-serif, Georgia, Cambria, 'Times New Roman', Times,
+      serif;
+    letter-spacing: -0.01em;
+  }
+
+  #root {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    text-align: left;
+    min-height: 100svh;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .font-heading {
+    font-family: 'Playfair Display', ui-serif, Georgia, Cambria, 'Times New Roman', Times,
+      serif;
+  }
+
+  .font-body {
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  ::selection {
+    background: rgba(217, 119, 6, 0.35);
+  }
+}
+
+@keyframes lux-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Continuous projects marquee — 3 visible cards */
+.projects-marquee-viewport {
+  container-type: inline-size;
+  overflow: hidden;
+  width: 100%;
+}
+
+.projects-marquee-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: projects-marquee 42s linear infinite;
+}
+
+.projects-marquee-viewport:hover .projects-marquee-track {
+  animation-play-state: paused;
+}
+
+.project-marquee-card {
+  flex-shrink: 0;
+  width: calc((100cqw - 3rem) / 3);
+  min-width: 0;
+}
+
+@keyframes projects-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+    max-width: 80rem;
+    margin-inline: auto;
+  }
+}
