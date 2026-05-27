@@ -3,6 +3,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
@@ -12,6 +13,7 @@
     font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
   h1,
@@ -32,10 +34,19 @@
     min-height: 100svh;
     display: block;
     box-sizing: border-box;
+    overflow-x: clip;
   }
 
   * {
     box-sizing: border-box;
+  }
+
+  img,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
+    height: auto;
   }
 
   .font-heading {
@@ -80,6 +91,41 @@
   flex-shrink: 0;
   width: calc((100cqw - 3rem) / 3);
   min-width: 0;
+}
+
+/* Responsive marquee:
+   - Mobile: swipeable, snap-scrolling cards (no auto-marquee)
+   - Tablet: 2 visible cards
+   - Desktop: 3 visible cards (default above) */
+@container (max-width: 40rem) {
+  .projects-marquee-viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .projects-marquee-viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .projects-marquee-track {
+    animation: none;
+    width: auto;
+    padding-inline: 0.25rem;
+  }
+
+  .project-marquee-card {
+    width: min(22rem, 86cqw);
+    scroll-snap-align: start;
+  }
+}
+
+@container (min-width: 40.0625rem) and (max-width: 64rem) {
+  .project-marquee-card {
+    width: calc((100cqw - 1.5rem) / 2);
+  }
 }
 
 @keyframes projects-marquee {
