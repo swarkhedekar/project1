@@ -1,22 +1,27 @@
-import type { Project } from '../types/content'
+﻿import type { Project } from '../types/content'
 
 export const projects: Project[] = [
   {
-    id: 'maha-mumbai-hub',
-    title: 'Maha Mumbai Hub',
+    id: 'maha-mumbai',
+    title: 'Maha Mumbai',
     location: 'Navi Mumbai',
     status: 'Completed',
     description:
-      'Strategic commercial and residential plots near the upcoming international airport.',
+      'A modern urban residential township with premium connectivity and commercial opportunities.',
     imageUrl:
-      'https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1400&q=80',
-    featuresAndAmenities: [
-      'Proximity to Navi Mumbai International Airport',
-      'Wide internal roads with landscaped medians',
-      '24/7 security with CCTV surveillance',
-      'Underground utility ducting for clean aesthetics',
-      'Dedicated commercial and retail zones',
+      'https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=2000&q=80',
+    tagline: 'Urban sophistication redefined.',
+    about:
+      'Maha Mumbai is a modern urban residential township strategically located near upcoming infrastructure developments. It offers smart living spaces with premium connectivity and commercial opportunities.',
+    amenities: [
+      'Smart Security',
+      'Rooftop Lounge',
+      'Business Center',
+      'Gymnasium',
+      'EV Charging',
+      'Sky Garden',
     ],
+    hasDetailPage: true,
   },
   {
     id: 'green-valley-heights',
@@ -24,16 +29,65 @@ export const projects: Project[] = [
     location: 'Lonavala',
     status: 'Ongoing',
     description:
-      'Premium villa plots overlooking the lush Lonavala valleys.',
+      'Premium villa plots overlooking the lush Lonavala valleys with panoramic mountain views.',
     imageUrl:
-      'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80',
-    featuresAndAmenities: [
-      'Panoramic valley views from every plot',
-      'Private clubhouse with infinity pool',
-      'Organic farm and jogging trails',
-      'Gated community with round-the-clock security',
-      'Rainwater harvesting and solar street lighting',
+      'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=2000&q=80',
+    tagline: 'Luxury living amidst the clouds.',
+    about:
+      'Green Valley Heights is a premium hillside villa plotting project surrounded by the Sahyadri mountains. The development offers panoramic valley views, cool climate, landscaped roads, and luxurious amenities designed for nature lovers and weekend homeowners.',
+    amenities: [
+      'Valley View Decks',
+      'Private Clubhouse',
+      'Trekking Trails',
+      'Gated Community',
+      'Swimming Pool',
+      'Meditation Garden',
     ],
+    hasDetailPage: true,
+  },
+  {
+    id: 'the-farm-dale',
+    title: 'The Farm Dale',
+    location: 'Karjat',
+    status: 'Ongoing',
+    description:
+      'Luxury farmhouse community combining modern architecture with open green landscapes.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=2000&q=80',
+    tagline: 'Reconnect with nature in luxury.',
+    about:
+      'The Farm Dale is a luxury farmhouse community designed for peaceful countryside living. The project combines modern architecture with open green landscapes and private farming spaces.',
+    amenities: [
+      'Organic Farming Area',
+      'Rainwater Harvesting',
+      'Horse Riding Zone',
+      'Weekend Villas',
+      'Kids Play Area',
+      'Solar Street Lighting',
+    ],
+    hasDetailPage: true,
+  },
+  {
+    id: 'dapoli-712',
+    title: 'Dapoli 712',
+    location: 'Dapoli',
+    status: 'Upcoming',
+    description:
+      'A serene coastal investment destination offering sea-facing villa plots near Konkan beaches.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=80',
+    tagline: 'Experience the serenity of the coastline.',
+    about:
+      'Dapoli 712 is a coastal investment destination offering sea-facing villa plots near Konkan beaches. The project focuses on luxury vacation living with tropical landscape planning and premium infrastructure.',
+    amenities: [
+      'Sea View Points',
+      'Beach Access',
+      'Palm Landscapes',
+      'Infinity Pool',
+      'Resort Style Entrance',
+      'Open Air Café',
+    ],
+    hasDetailPage: true,
   },
   {
     id: 'athiya-business-park',
@@ -44,13 +98,6 @@ export const projects: Project[] = [
       'State-of-the-art commercial spaces designed for modern enterprises.',
     imageUrl:
       'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80',
-    featuresAndAmenities: [
-      'Grade-A commercial office spaces',
-      'High-speed elevators and smart building management',
-      'Ample multi-level parking facility',
-      'Conference centre and co-working lounge',
-      'EV charging stations and green-certified design',
-    ],
   },
   {
     id: 'riverside-residencies',
@@ -61,46 +108,13 @@ export const projects: Project[] = [
       'Exclusive residential towers with uninterrupted river views.',
     imageUrl:
       'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1400&q=80',
-    featuresAndAmenities: [
-      'Floor-to-ceiling windows with river-facing balconies',
-      'Rooftop sky lounge and terrace garden',
-      "Children's play area and senior citizen zone",
-      'Earthquake-resistant RCC structure',
-      'Piped gas, intercom, and high-speed internet ready',
-    ],
-  },
-  {
-    id: 'the-farm-dale',
-    title: 'The Farm Dale',
-    location: 'Karjat, Maharashtra',
-    status: 'Ongoing',
-    description:
-      'Luxury farmhouse plots with premium amenities nestled in the lap of nature.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80',
-    featuresAndAmenities: [
-      'Private farmhouse plots ranging from 2000–5000 sq ft',
-      'Clubhouse with swimming pool and gym',
-      'Fruit orchards and organic vegetable garden',
-      'Dedicated camping and bonfire zone',
-      'Well-maintained internal tar roads with street lighting',
-    ],
-  },
-  {
-    id: 'dapoli-712',
-    title: 'Dapoli 712',
-    location: 'Kelashi, Coastal Region',
-    status: 'Pre-Launch',
-    description:
-      'A serene coastal living project offering tranquility and scenic ocean views.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80',
-    featuresAndAmenities: [
-      'Unobstructed Arabian Sea views',
-      'Eco-friendly construction with local materials',
-      'Private beach access path',
-      'Yoga deck and wellness retreat centre',
-      'Solar-powered common areas and water recycling',
-    ],
   },
 ]
+
+export function getProjectBySlug(slug: string): Project | undefined {
+  return projects.find((p) => p.id === slug)
+}
+
+export function getFeaturedProjects(): Project[] {
+  return projects.filter((p) => p.hasDetailPage)
+}

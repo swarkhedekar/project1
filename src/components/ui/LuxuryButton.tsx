@@ -1,10 +1,12 @@
 import { type ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 type LuxuryButtonProps = {
   children: ReactNode
   onClick?: () => void
   href?: string
+  to?: string
   variant?: 'primary' | 'secondary'
   className?: string
   type?: 'button' | 'submit'
@@ -14,6 +16,7 @@ export default function LuxuryButton({
   children,
   onClick,
   href,
+  to,
   variant = 'primary',
   className = '',
   type = 'button',
@@ -29,12 +32,26 @@ export default function LuxuryButton({
   const commonGlow =
     'after:absolute after:inset-0 after:rounded-full after:opacity-0 after:blur-xl after:bg-[#d97706]/40 after:transition-opacity after:duration-300 hover:after:opacity-100'
 
+  const combined = `${base} ${styles} ${commonGlow} ${className}`
+
+  if (to) {
+    return (
+      <motion.div whileTap={{ scale: 0.98 }} className="inline-flex">
+        <Link to={to} className={combined}>
+          {children}
+        </Link>
+      </motion.div>
+    )
+  }
+
   if (href) {
     return (
       <motion.a
         whileTap={{ scale: 0.98 }}
         href={href}
-        className={`${base} ${styles} ${commonGlow} ${className}`}
+        target={href.startsWith('http') ? '_blank' : undefined}
+        rel={href.startsWith('http') ? 'noreferrer' : undefined}
+        className={combined}
       >
         {children}
       </motion.a>
@@ -46,7 +63,7 @@ export default function LuxuryButton({
       type={type}
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
-      className={`${base} ${styles} ${commonGlow} ${className}`}
+      className={combined}
     >
       {children}
     </motion.button>

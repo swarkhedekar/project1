@@ -1,17 +1,20 @@
 import { useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import LuxuryButton from '../ui/LuxuryButton'
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'About Us', href: '#about' },
+  { label: 'Home', href: '/#home' },
+  { label: 'Projects', href: '/#projects' },
+  { label: 'About Us', href: '/#about' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const location = useLocation()
+  const isProjectPage = location.pathname.startsWith('/projects/')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -26,17 +29,18 @@ export default function Navbar() {
     }
   }, [mobileOpen])
 
+  const headerBg =
+    scrolled || isProjectPage
+      ? 'bg-[#081229]/95 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl'
+      : 'bg-transparent'
+
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-[#081229]/95 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl'
-            : 'bg-transparent'
-        }`}
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${headerBg}`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          <a href="#home" className="group flex items-center gap-3">
+          <Link to="/" className="group flex items-center gap-3">
             <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#d97706]/15 ring-1 ring-[#d97706]/35 transition group-hover:bg-[#d97706]/25">
               <span className="font-heading text-xl font-bold text-[#d97706]">A</span>
             </div>
@@ -48,7 +52,7 @@ export default function Navbar() {
                 Developers
               </div>
             </div>
-          </a>
+          </Link>
 
           <nav className="hidden items-center gap-8 lg:flex">
             {navLinks.map((link) => (

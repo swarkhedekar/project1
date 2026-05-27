@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { MapPin } from 'lucide-react'
 import SectionHeading from '../ui/SectionHeading'
@@ -32,12 +32,18 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
         <h3 className="font-heading text-2xl font-semibold text-[#081229]">{project.title}</h3>
         <p className="mt-3 text-sm leading-relaxed text-[#081229]/70">{project.description}</p>
-        <Link
-          to={`/project/${project.id}`}
-          className="mt-5 inline-flex items-center gap-2 font-semibold text-[#081229] transition hover:text-[#d97706]"
-        >
-          View Details <span aria-hidden>→</span>
-        </Link>
+        {project.hasDetailPage ? (
+          <Link
+            to={`/projects/${project.id}`}
+            className="mt-5 inline-flex items-center gap-2 font-semibold text-[#081229] transition hover:text-[#d97706]"
+          >
+            View Details <span aria-hidden>→</span>
+          </Link>
+        ) : (
+          <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[#081229]/40">
+            Coming Soon
+          </span>
+        )}
       </div>
     </article>
   )

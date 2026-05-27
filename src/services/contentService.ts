@@ -1,4 +1,4 @@
-import type { Project } from '../types/content'
+﻿import type { Project } from '../types/content'
 import { projects } from '../data/projects'
 
 /**
@@ -9,7 +9,6 @@ export async function fetchProjects(): Promise<Project[]> {
   return projects
 }
 
-export async function fetchProjectById(id: string): Promise<Project | undefined> {
-  return projects.find((p) => p.id === id)
+export async function fetchProjectBySlug(slug: string): Promise<Project | undefined> {
+  return projects.find((p) => p.id === slug)
 }
-

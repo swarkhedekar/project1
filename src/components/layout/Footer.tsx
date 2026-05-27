@@ -1,25 +1,24 @@
+import { Link } from 'react-router-dom'
 import { FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa'
+import { getFeaturedProjects } from '../../data/projects'
 
 const quickLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'About Us', href: '#about' },
-]
-
-const featuredProjects = [
-  'Maha Mumbai Hub',
-  'Green Valley Heights',
-  'Athiya Business Park',
-  'Riverside Residencies',
+  { label: 'Home', href: '/#home' },
+  { label: 'Projects', href: '/#projects' },
+  { label: 'About Us', href: '/#about' },
 ]
 
 export default function Footer() {
+  const featuredProjects = getFeaturedProjects()
+
   return (
     <footer className="bg-[#081229] text-white">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="font-heading text-2xl font-semibold">Athiya Developers</div>
+            <Link to="/" className="font-heading text-2xl font-semibold transition hover:text-[#d97706]">
+              Athiya Developers
+            </Link>
             <p className="mt-4 text-sm leading-relaxed text-white/65">
               Redefining premium living with exceptional properties, transparent processes,
               and strategic developments across India.
@@ -54,10 +53,13 @@ export default function Footer() {
             <h4 className="font-heading text-lg">Featured Projects</h4>
             <ul className="mt-4 space-y-3 text-sm text-white/70">
               {featuredProjects.map((project) => (
-                <li key={project}>
-                  <a href="#projects" className="transition hover:text-[#d97706]">
-                    {project}
-                  </a>
+                <li key={project.id}>
+                  <Link
+                    to={`/projects/${project.id}`}
+                    className="transition hover:text-[#d97706]"
+                  >
+                    {project.title}
+                  </Link>
                 </li>
               ))}
             </ul>
