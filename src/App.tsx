@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import AppLoader from './components/ui/AppLoader'
 import ScrollToTopOnRouteChange from './components/ui/ScrollToTopOnRouteChange'
 import HomePage from './pages/HomePage'
+import ProjectDetailPage from './pages/ProjectDetailPage'
 import AdminDashboardPlaceholder from './pages/AdminDashboardPlaceholder'
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
         <ScrollToTopOnRouteChange />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/project/:id" element={<ProjectDetailPage />} />
           <Route path="/admin" element={<AdminDashboardPlaceholder />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

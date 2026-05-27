@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { MapPin } from 'lucide-react'
 import SectionHeading from '../ui/SectionHeading'
 import StatusBadge from '../ui/StatusBadge'
@@ -31,12 +32,12 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
         <h3 className="font-heading text-2xl font-semibold text-[#081229]">{project.title}</h3>
         <p className="mt-3 text-sm leading-relaxed text-[#081229]/70">{project.description}</p>
-        <button
-          type="button"
+        <Link
+          to={`/project/${project.id}`}
           className="mt-5 inline-flex items-center gap-2 font-semibold text-[#081229] transition hover:text-[#d97706]"
         >
           View Details <span aria-hidden>→</span>
-        </button>
+        </Link>
       </div>
     </article>
   )

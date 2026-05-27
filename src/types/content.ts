@@ -7,5 +7,6 @@ export type Project = {
   status: ProjectStatus
   description: string
   imageUrl: string
+  featuresAndAmenities: string[]
 }
 
