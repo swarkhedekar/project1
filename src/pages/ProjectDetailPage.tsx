@@ -73,9 +73,6 @@ export default function ProjectDetailPage() {
             <h1 className="mt-3 font-heading text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">
               {project.title}
             </h1>
-            <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
-              {project.description}
-            </p>
           </div>
         </div>
       </section>
@@ -88,32 +85,44 @@ export default function ProjectDetailPage() {
           transition={{ duration: 0.6 }}
         >
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#d97706]">
-            Highlights
+            Overview
           </p>
           <h2 className="font-heading text-3xl font-semibold text-[#081229] sm:text-4xl">
-            Key Features &amp; Amenities
+            About Project
           </h2>
-          <p className="mt-3 max-w-2xl text-base leading-relaxed text-[#081229]/70">
-            Everything you need for a premium lifestyle, all in one place.
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-[#081229]/70 sm:text-lg">
+            {project.description}
           </p>
+        </motion.div>
 
-          <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-12"
+        >
+          <h3 className="font-heading text-2xl font-semibold text-[#081229]">
+            Amenities &amp; Knowledge
+          </h3>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {project.featuresAndAmenities.slice(0, 5).map((item, index) => (
-              <motion.li
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="flex items-start gap-4 rounded-2xl border border-[#081229]/8 bg-[#081229]/[0.02] p-5 shadow-sm transition hover:shadow-md"
+                className="flex items-start gap-3 rounded-xl border border-[#d97706]/15 bg-[#d97706]/[0.03] p-4 transition hover:border-[#d97706]/30 hover:shadow-md"
               >
-                <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-[#d97706]" />
-                <span className="text-sm leading-relaxed text-[#081229]/85 sm:text-base">
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#d97706]" />
+                <span className="text-sm leading-relaxed text-[#081229]/85">
                   {item}
                 </span>
-              </motion.li>
+              </motion.div>
             ))}
-          </ul>
+          </div>
         </motion.div>
       </section>
 
