@@ -147,3 +147,24 @@
     margin-inline: auto;
   }
 }
+
+/* Hero slideshow — Swiper navigation & pagination (premium theme) */
+.hero-swiper .swiper-slide {
+  height: 100%;
+  min-height: 100vh;
+}
+
+.hero-swiper-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  margin: 0 6px !important;
+  background: rgba(255, 255, 255, 0.35);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.hero-swiper-pagination .swiper-pagination-bullet-active {
+  width: 28px;
+  border-radius: 9999px;
+  background: #d97706;
+}
