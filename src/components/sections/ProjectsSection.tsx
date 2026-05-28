@@ -114,8 +114,8 @@ export default function ProjectsSection() {
 
   const marqueeSlides = useMemo(() => {
     if (slides.length === 0) return []
-    // Duplicate for seamless marquee loop
-    return [...slides, ...slides]
+    // Only show unique slides without duplication
+    return slides
   }, [slides])
 
   const marqueeProjects = useMemo(() => {

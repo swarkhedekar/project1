@@ -56,6 +56,7 @@ function toSlide(id: string, data: Record<string, unknown>): Slide | null {
 /**
  * Fetch slideshow slides from Firestore collection "slides".
  * Falls back to demo slides when Firebase is not configured or the collection is empty.
+ * Deduplicates slides by ID to ensure no duplicates are shown.
  */
 export async function fetchSlides(): Promise<Slide[]> {
   if (!isFirebaseConfigured || !db) {
@@ -64,10 +65,16 @@ export async function fetchSlides(): Promise<Slide[]> {
 
   try {
     const snapshot = await getDocs(collection(db, 'slides'))
-    const slides = snapshot.docs
-      .map((docSnap) => toSlide(docSnap.id, docSnap.data() as Record<string, unknown>))
-      .filter((slide): slide is Slide => slide !== null)
+    const slidesMap = new Map<string, Slide>()
 
+    snapshot.docs.forEach((docSnap) => {
+      const slide = toSlide(docSnap.id, docSnap.data() as Record<string, unknown>)
+      if (slide) {
+        slidesMap.set(slide.id, slide)
+      }
+    })
+
+    const slides = Array.from(slidesMap.values())
     return slides.length > 0 ? slides : FALLBACK_SLIDES
   } catch (error) {
     console.error('Failed to fetch slides from Firestore:', error)
@@ -91,10 +98,16 @@ export function subscribeToSlides(
   const unsubscribe = onSnapshot(
     collection(db, 'slides'),
     (snapshot) => {
-      const slides = snapshot.docs
-        .map((docSnap) => toSlide(docSnap.id, docSnap.data() as Record<string, unknown>))
-        .filter((slide): slide is Slide => slide !== null)
+      const slidesMap = new Map<string, Slide>()
 
+      snapshot.docs.forEach((docSnap) => {
+        const slide = toSlide(docSnap.id, docSnap.data() as Record<string, unknown>)
+        if (slide) {
+          slidesMap.set(slide.id, slide)
+        }
+      })
+
+      const slides = Array.from(slidesMap.values())
       onData(slides.length > 0 ? slides : FALLBACK_SLIDES)
     },
     (error) => {
